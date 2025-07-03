@@ -1,4 +1,4 @@
-# Nextra Docs Template 
+# SIGGRAPH 2025: Spatial Design and Graphics for the Apple Vision Pro
 
 This is a template for creating documentation with [Nextra](https://nextra.site).
 
