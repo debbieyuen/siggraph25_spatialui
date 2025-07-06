@@ -1,15 +1,17 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
+  "index": "Welcome",
+  "another": "Resources",
+  "advanced": "Hands-On-Lab",
   "about": {
-    "title": "About",
-    "type": "page"
+    "title": "SIGGRAPH 25 ↗",
+    "type": "page",
+    "href": "https://s2025.siggraph.org",
+    "newWindow": true
   },
   "contact": {
-    "title": "Contact ↗",
+    "title": "visionOS ↗",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
+    "href": "https://developer.apple.com/visionos/",
     "newWindow": true
   }
 }
