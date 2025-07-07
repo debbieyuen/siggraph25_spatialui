@@ -1,0 +1,7 @@
+{
+  "image-classification": { "title": "Image Classification" },
+  "object-detection": { "title": "Object Detection" },
+  "swiftui": { "title": "SwiftUI" },
+  "coreml": {"title": "CoreML"},
+  "vision-framework": { "title": "Vision Framework" }
+}
