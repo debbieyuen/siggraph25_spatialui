@@ -6,7 +6,7 @@ const config: DocsThemeConfig = {
     banner: {
     key: 'announcement-2025',
     text: (
-      <a href="https://siggraph2025.org" target="_blank" rel="noreferrer">
+      <a href="https://s2025.conference-schedule.org/presentation/?id=gensub_405&sess=sess306" target="_blank" rel="noreferrer">
         🎉 Join us at SIGGRAPH on Monday, August 11th 2025 from 2:00-3:30 pm at West Building, Exhibit Hall B →
       </a>
     ),
