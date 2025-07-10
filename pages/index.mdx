@@ -9,14 +9,53 @@
 Thank you for joining our session, hosted by Debbie Yuen (USC) and Mark Ramos (NYU), and made possible through the generosity of NVIDIA, Apple, and SIGGRAPH! In this session, we focus on spatial user interfaces (UI) and graphics for three-dimensional environments. We explore designing intuitive and predictive 3D user interfaces with machine learning. Before we get started with our lecture and hands-on lab, we would love to provide a brief introduction on the Apple Vision Pro, what you can expect from this course, and the materials you will need. 
 
 ## Getting Started with the Apple Vision Pro
-We have a total of 25 Apple Vision Pro placed on every other computer. Please gather together in groups to collaborate on the programming exercises and take turns sharing the Apple Vision Pro. For the best experience with the Apple Vision Pro, we recommend remaining seated and removing jewelry that may come in contact with the Apple Vision Pro while being worn. If you are experiencing any discomfort, please alert the instructors immediately. 
+We have a total of 25 Apple Vision Pro placed by every other computer. Please gather together in groups to collaborate on the programming exercises and take turns sharing the Apple Vision Pro. For the best experience with the Apple Vision Pro, we recommend remaining seated and removing jewelry that may come in contact with the Apple Vision Pro while being worn. If you are experiencing any discomfort, please alert the instructors immediately. 
 
 To read more about how to adjust the fit of the Apple Vision Pro, complete setup, and navigate applications, please visit [*Getting started with the Apple Vision Pro*](https://support.apple.com/guide/apple-vision-pro/get-started-with-apple-vision-pro-tan489cfe222/visionos).
 
 When the Apple Vision Pro is not in use, please place it carefully back in its case along with its associated cords and materials. Before leaving the lab session, we ask to double-check that the Apple Vision Pro is stored properly and its charging cables are attached. 
 
 ## Why the Apple Vision Pro? 
+Apple has a reputation for setting the standards for UI/UX and great user experiences. In combination with advanced technology for motion gestures, eye tracking, speech recognition, and object detection, we believe that exploring the space of multimodal 3D UI/UX with the Apple Vision Pro would not only be fun but also valuable to many.
+
+As we explore the world of predictive UI together, we challenge you to innovate and imagine what good user experience looks like in a spatial environment. How might we integrate AI/ML tools to design interfaces that support users in navigating 3D environments, particularly in passthrough mode? 
+
+When we think of UI/UX and Product Design, might think of designing 2D interfaces with platforms such as Adobe XD, Figma, and Bezi. If you are interested in focusing on design without programming, we will provide design resources for the Apple Vision Pro. In this session due to time constraints, we will focus on developing interfaces with SwiftUI.  Working with code will allow us to create advanced and custom interfaces while giving us the opportunity to look at front-end interaction design and back-end logic. 
+
+What about 3D UI with game engines such as Unreal or Unity? Unreal and Unity are both really great tools for developing cross-platform spatial experiences. In this session, we particularly want to focus on the tech stack with CreateML, the Vision Framework, Reality Composer, and CoreML, all of which integrate well with XCode and can be quickly built to the Apple Vision Pro. We will provide resources on developing for the Apple Vision Pro with Unity and Unreal as well. 
+
+Thank you again for joining our session. We hope you have fun working with the Apple Vision Pro and are able to learn something valuable from us. 
 
 ## Course Materials
+| Materials            | Description                                          | Links                                      |
+|----------------------|------------------------------------------------------|-------------------------------------------|
+| Lecture Slides       | Shareable link to the session’s presentation         | [Keynote Slides]()                             |
+| GitHub Project       | Open-source visionOS project on SwiftUI, CoreML, and Vision Framework | [GitHub Repository]()         |
+| Reality Composer (iOS) | iOS mobile app for object detection                  | [Website](https://apps.apple.com/us/app/reality-composer/id1462358802) |
+| Demo App: Squiggly   | visionOS project built to the Apple Vision Pro as prototype | Apple Vision Pro                       |
+| Research Paper       | Background and motivation on this area               | [Research Paper]()                             |
+
+If you are working on your own Mac computers and iPhones, we will be using the following software today. Please keep in mind that your Mac computers must be on macOS Sequoia and a Mac with an Apple silicon chip (M1, M2, M3, M4).
+
+| Materials               | Description                                           | Links                                                                                                                                              |
+|-------------------------|-------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| Reality Composer Pro (Mac) | Shareable link to the session’s presentation         | [Website](https://developer.apple.com/augmented-reality/tools/)                                                                                   |
+| CreateML               | Open-source visionOS project on SwiftUI, CoreML, and Vision Framework | [Website](https://developer.apple.com/machine-learning/create-ml/)                                                                     |
+| Xcode Beta            | visionOS project built to the Apple Vision Pro as a prototype application | [Website](https://developer.apple.com/documentation/Xcode-Release-Notes/xcode-26-release-notes)                                        |
+
 
 ## Agenda
+**5 minutes: Welcome and Introductions**  
+Welcome, overview of the course, instructor introductions, and course motivation.
+
+**10 minutes: Introduction to Swift and visionOS**  
+An overview of visionOS and spatial computing. We set up a new visionOS project in XCode and get the Apple Vision Pro simulator working. Then, we briefly cover Swift, SwiftUI, RealityKit, and Reality Composer for visionOS. Students experiment with creating views, UI, and windows.
+
+**20 minutes: CoreML with SwiftUI**  
+Overview of Apple's CoreML and how to use their models to integrate machine learning in visionOS applications. Attendees will set up and add their CoreML files to XCode and explore hand and eye-tracking gestures for the Apple Vision Pro.
+
+**20 minutes: RealityKit and Reality Composer**  
+Design an interactive spatial UI using RealityKit, SwiftUI, and Reality Composer. Attendees may bring in their own 3D models to use in their own applications and further explore the Vision framework [~visionframework].
+
+**5 minutes: Closing Remarks**  
+Review, questions, and discussion.
