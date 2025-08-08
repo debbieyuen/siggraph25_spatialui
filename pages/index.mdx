@@ -6,7 +6,7 @@
 
 <p align="center"><em>Figure 1: The Apple Vision Pro. Source: [Apple Newsroom](https://www.apple.com/newsroom/2023/06/introducing-apple-vision-pro/)</em></p>
 
-Thank you for joining our session, hosted by Debbie Yuen (USC) and Mark Ramos (NYU), and made possible through the generosity of NVIDIA, Apple, and SIGGRAPH! In this session, we focus on spatial user interfaces (UI) and graphics for three-dimensional environments. We explore designing intuitive and predictive 3D user interfaces with machine learning. Before we get started with our lecture and hands-on lab, we would love to provide a brief introduction on the Apple Vision Pro, what you can expect from this course, and the materials you will need. 
+Thank you for joining our session, hosted by [Debbie Yuen (USC)](https://www.linkedin.com/in/deborahyuen/) and [Mark Ramos (NYU)](), and made possible through the generosity of NVIDIA, Apple, and SIGGRAPH! In this session, we focus on spatial user interfaces (UI) and graphics for three-dimensional environments. We explore designing intuitive and predictive 3D user interfaces with machine learning. Before we get started with our lecture and hands-on lab, we would love to provide a brief introduction on the Apple Vision Pro, what you can expect from this course, and the materials you will need. 
 
 ## Getting Started with the Apple Vision Pro
 We have a total of 25 Apple Vision Pro placed by every other computer. Please gather together in groups to collaborate on the programming exercises and take turns sharing the Apple Vision Pro. For the best experience with the Apple Vision Pro, we recommend remaining seated and removing jewelry that may come in contact with the Apple Vision Pro while being worn. If you are experiencing any discomfort, please alert the instructors immediately. 
@@ -59,3 +59,34 @@ Design an interactive spatial UI using RealityKit, SwiftUI, and Reality Composer
 
 **5 minutes: Closing Remarks**  
 Review, questions, and discussion.
+
+## Questions
+### What if I don't have access to an Apple Vision Pro? 
+Object detection, gestures, and eye tracking all depend on the Apple Vision Pro. Alternatively, you may also build to a visionOS simulator in XCode. It is required to work on a Mac when building for visionOS. 
+
+### How might I build the Squiggly App on my own Mac? 
+Visit `github.com` to see the instructions on how to set up the Squiggly App on your perosnal Mac. You will need a GitHub account, Git and GitLFS. If you would like to access the Hugging Face modeles, you will also need a personal token. 
+
+### Where can I access the machine learning models and datasets? 
+For this lab course, models are compiled as a submodule folder from `github.com`. However, you may find the full set at their respective repositories. For object detection, the `.referenceobjects` are found in the **Reference Objects** folder. Yoou may find all reference objects trained for this course are found at `huggingface.co`. The pretrained models for [MNIST](), [FastViT](), and the [Vision Framework]() can be found at their respective websites and repositories. For the the `squigglydataset`, you may use and contribute to the dataset at `huggingface.co`.
+
+### Where can I find 3D assets for visionOS projects?
+Reality Conposer Pro for Mac has great 3D models in `.usdz` format. Alternatively, you may also use your own 3D model and convert it to `.usdz` format. If you are using free models online for commerical use or AI training purposes, please remember to read the licensing!
+
+### XCode can't find my Apple Vision Pro device. How can I build to the Apple Vision Pro from the Macbook? 
+Make sure both the computer and the Vision Pro are on the same Wifi network and ensure that `Developer Mode` on the Apple Vision Pro is turned on. If your Apple Vision Pro has a developer strap, make sure the cord is connected properly between the computer and the Vision Pro. In the XCode header, select `Manage Run Desinations` and click on the `Apple Vision Pro`. 
+
+### What if I have ideas on how to improve the Squiggly App? 
+Create a fork of the `squiggly` app and send us a pull request!!
+
+### Does the Squiggly App run on visionOS 1.0 or visionOS 26? 
+The Squiggly App runs only on visionOS 2.0 and does not work on visionOS 1.0. In the upcoming months, we are expecting to upgrade to visionOS 26. 
+
+### Is it a requirement to use CreateML and Reality Composer Pro? 
+It is not a requirement to use CreateML to create new models and it also is not a requirement to use Reality Composer Pro as your primary 3D modeling software. The 3D models in Squiggly were exported from Blender, converted to `.usdz` format and then brought into Reality Composer Pro. The Squiggly App relies on `RealityView` in which it depends on the corresponding Reality Composer projects. 
+
+### What object detection application did you use to capture the 3D objects? 
+The Reality Composer iOS app was used to create 3D scans of physical objects. The models were then processed on the Mac with Reality Composer Pro. The Reality Composer iOS app is compatible only with iPhone Pro devices.
+
+### How can I reach the instructors? 
+You may contact Debbie at her personal email at [deborahyuen@berkeley.edu]() or her work email at [yuend@usc.edu](). And Mark at __.

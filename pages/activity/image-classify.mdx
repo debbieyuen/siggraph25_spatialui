@@ -1,38 +1,17 @@
-# Image Classification
+# Photo Classification
 
 ## Overview
 
-An image classifier is a machine learning model that recognizes images. When you give it an image, it responds with a category label for that image. You train an image classifier by showing it many examples of images you’ve already labeled. For example, you can train an image classifier to recognize animals by gathering photos of elephants, giraffes, lions, and so on. After the image classifier finishes training, you assess its accuracy and, if it performs well enough, save it as a Core ML model file. You then import the model file into your Xcode project to use the image classifier in your app. CreateML is a tool that we will be using to support us through this process.
+In the Squiggly App, image classifiers played essential roles in categorizing. Through Apple's image classifier with CreateML, machine learning models can be created to recognize images. The Squiggly App also explores the FastViT model and the Vision Framework in how they categorize images. 
 
-## Getting Started 
-First lets start off with picking a 3D model. In our case, we got 24 count crayon boxes from Target. Luckily, they are on sale for 0.50 cents (USD)!!
+Navigate to the toolbar on the right hand side and find **Photo Classification**. The Squiggly App by default runs the image classifier model, Vision Framework. Click on the **Select Image** button in which it will pull up a pop-up to open up **Photo Picker** to selct images from the Photo Library. When fed an image, the model will respond with a category label for the image. Image classifiers are trained by showing it many examples of labeled images. In this case, we are using a trained image classifier to recognize an image of a selectedd photo. 
 
-![Apple Vision Pro](../.././components/public/images/class1.jpeg)
+## PhotoPicker
 
-There are a number of different ways we can gather data on our crayon box. 
-* If you are on an iPhone Pro (iPhone 12, 14, 15, 16) you may use Apple's [Reality Composer]() iOS app or download their [Object Capture]() application. 
-* If you do not have an iPhone, you may take at minimum 10 photos of your item. It is recommended to take between 50-100 photos for each object. Then, on [Reality Composer Pro]() we can compile the images and create a 3D model. 
-* Alternatively, we can use other applications such as [PolyCam](), [Luma3D](), and [Abound]().
+## Machine Learning Models
+### FastVit
+### Apple Vision Framework 
+## Custom Image Classifier (CreateML)
+As a drawing app, we are able to draw strokes of our choice. Later we will discuss how to create a custom image classifier model. 
 
-Other than our crayon box, we experimented with training individual crayons, the Ardunio UNO, stuffed animals, Raspberr Pi Pico, and whiteboard Expo markers. 
-
-![Apple Vision Pro](../.././components/public/images/class2.png)
-
-![Apple Vision Pro](../.././components/public/images/class3.png)
-
-If you are working with a set of images, you may open up [Reality Composer Pro]() on the Mac and select **Create New Object Capture Model**. From there, a 3D model in a `.usdz` format will be created for you. You may also use existing 3D models, just make sure they are in `.usdz` format. 
-
-![Apple Vision Pro](../.././components/public/images/class4.png)
-
-Next, we can bring in our *.usdz* file into [CreateML](). It is important to make sure the objects are in the right dimensions in `cm`. If the dimensions are incorrect, you may modify them in a 3D modeling software such as [Blender]().
-
-
-![Apple Vision Pro](../.././components/public/images/class5.png)
-
-
-![Apple Vision Pro](../.././components/public/images/class6.png)
-
-Finally, you can start training! It is expected to take some time. Once it is complete, you may export it as a **Reference Object** in `.referenceobject` format. Once you have your reference object, you may place the reference objects into your XCode project under the a folder named `Reference Objects`.
-
-
-![Apple Vision Pro](../.././components/public/images/class7.png)
+You train an image classifier by showing it many examples of images you’ve already labeled. For example, you can train an image classifier to recognize animals by gathering photos of elephants, giraffes, lions, and so on. After the image classifier finishes training, you assess its accuracy and, if it performs well enough, save it as a Core ML model file. You then import the model file into your Xcode project to use the image classifier in your app. CreateML is a tool that we will be using to support us through this process.

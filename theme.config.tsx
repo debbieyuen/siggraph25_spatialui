@@ -20,7 +20,7 @@ const config: DocsThemeConfig = {
   // },
   docsRepositoryBase: 'https://github.com/debbieyuen/spatialui',
   footer: {
-    text: 'Demo Project',
+    text: 'Copyright @debbieyuen',
   },
 }
 
