@@ -4,10 +4,25 @@
 
 ## User interfaces
 
+Navigating to the **Packages** folder in XCode, we can find our Reality Composer Pro project files. In the screenshot below, we can visualize the 3D model of our Pixel character. Underneath the 3D model, there is a **Package** file in which you may then open the project in Reality Composer Pro. 
+
+![Apple Vision Pro](../.././components/public/images/interface/interface1.png)
+
 ### Reality Composer Pro
 
+In the following example, we open up the **RealityKitCrayonBoxContent** that holds the information for object detection with the 3D crayon box. To overlay UI over the crayon box, we configured it in Reality Composer Pro by creating a new `Transform` object and attaching an `Anchor` with an `Object` target. 
+
+![Apple Vision Pro](../.././components/public/images/interface/interface2.png)
+
 ### User interfaces
-SwiftUI, UIKit, RealityKit
+
+Now that we have anchors on the 3D reference objects, we are able to write in code to overlay UI. In our case, we used SwiftUI to overlay UI over the crayon box. 
+![Apple Vision Pro](../.././components/public/images/interface/interface3.PNG)
+
+How did we create anchors to the wrist? The anchor for the wrist was created in code; however, this can also be done in Reality Composer Pro as well. Instead of selecting `Object` as the target, select `Hand`.
+![Apple Vision Pro](../.././components/public/images/interface/interface4.PNG)
+
+How does SwiftUI, UIKit, and RealityKit go together? 
 
 ### RealityView
 
