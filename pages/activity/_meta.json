@@ -1,5 +1,5 @@
 {
-  "image-classify": { "title": "Image Classification" },
+  "image-classify": { "title": "Photo Classification" },
   "object-detection": { "title": "Object Detection" },
   "interface": { "title": "User Interface" }
 }
