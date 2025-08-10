@@ -1,7 +1,7 @@
 {
   "name": "nextra-docs-template",
   "version": "0.0.1",
-  "description": "Nextra docs template",
+  "description": "SIGGRAPH LABS",
   "type": "module",
   "scripts": {
     "dev": "next dev",
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/shuding/nextra-docs-template.git"
   },
-  "author": "Shu Ding <g@shud.in>",
+  "author": "Debbie Yuen <yuend@usc.edu>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/shuding/nextra-docs-template/issues"
