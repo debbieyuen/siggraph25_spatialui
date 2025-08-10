@@ -1,4 +1,27 @@
+import { Steps } from 'nextra/components'
+import { Callout } from 'nextra/components'
+
 # Object Detection
+
+## Getting Started 
+<Steps>
+
+### Step 1: PhotoClassificationView.swift
+The project's folder structure is broken up into MVVM (Model-View-ViewModel) architecture. Navigate to `squiggly/Views/Main/PhotoClassificationView.swift`.
+
+![Apple Vision Pro](../../components/public/images/imageclassify/classify1.png)
+
+### Step 2: Photos Tab in Toolbar
+On the Apple Vision Pros, you will find the toolbar on the left. In this window, we have 3 toolbars including the left toolbar, bottom toolbar, and the top ornament. Select the `Photos` Tab to open up the tab. 
+
+![Apple Vision Pro](../../components/public/images/imageclassify/classify2.png)
+
+### Step 3: Choose Photo
+Once you are in the tab, you may try choosing a photo of your choice to classify. By default we are using Apple's built-in Vision Framework with `VNClassifyImageRequest()`. 
+
+![Apple Vision Pro](../../components/public/images/imageclassify/classify3.png)
+
+</Steps>
 
 ## Overview
 
@@ -45,13 +68,70 @@ After creating the reference objects, we are then able to add them to our **Refe
 ![Apple Vision Pro](../.././components/public/images/objectdetection/objectdetection8.PNG)
 
 ### Hand Detection and Gestures
+Squiggly uses Apple’s hand-tracking APIs to detect when you pinch, tap, or perform other gestures in mid-air. This lets you draw, select tools, and interact with 3D elements without needing controllers.
 
 ### Eye Tracking
+With visionOS eye-tracking, Squiggly can highlight objects or UI elements as you look at them, making interactions more natural. Your gaze can be combined with gestures to confirm selections, keeping your workflow smooth and hands-free.
 
 ### Object Detection Anchoring
+In Squiggly, reference objects let the app recognize and track real-world items—like crayons—so we can anchor 3D drawings in the correct position in space.
+
 #### Method 1: Reality Composer Pro
+Use Reality Composer Pro to import your `.arobject` or `.referenceobject` files. Once added, they can be placed directly into your scene with drag-and-drop simplicity. This is how Squiggly app implemented object anchoring. 
+
+<Callout type="info" emoji="💡">
+  <strong>Note:</strong> Want to learn more? Read more about using a reference object with Reality Composer Pro <strong><a href="https://developer.apple.com/documentation/visionos/using-a-reference-object-with-reality-composer-pro">here</a></strong>!
+</Callout>
+
 #### Method 2: Programmatically 
-#### Method 3: hello
+Load reference objects in Swift code using RealityKit. This allows you to dynamically choose which object to track at runtime, enabling advanced features like switching between multiple tracked objects.
+
+<Callout type="info" emoji="💡">
+  <strong>Note:</strong> Want to learn more? Read more about using a reference object with RealityKit <strong><a href="https://developer.apple.com/documentation/visionos/using-a-reference-object-with-realitykit">here</a></strong>!
+</Callout>
+
+#### Method 3: ARKit
+For lower-level control, Squiggly can use ARKit’s `ARReferenceObject` APIs. This is ideal if you need custom detection logic or want to integrate with AR session configuration directly.
+
+<Callout type="info" emoji="💡">
+  <strong>Note:</strong> Want to learn more? Read more about using a reference object with ARKit<strong><a href="https://developer.apple.com/documentation/visionos/using-a-reference-object-with-arkit">here</a></strong>!
+</Callout>
 
 ### Local vs Cloud
+All models used in the Squiggly app are using local models. For our learning purposes, we wanted to make sure the projects were able to run even without WiFi. 
 
+you can run machine learning models either locally or in the cloud. When running locally, the Core ML model is downloaded to your device, allowing the app to work completely offline with low and consistent latency. All images stay on the headset, which means your data never leaves the device, making this option ideal for real-time interactions, privacy, and demos. However, the model size is limited by the app package and the computing power of the device.
+
+```swift filename="ImageClasifier.swift" {6} copy
+let request = VNClassifyImageRequest()
+        let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+
+        do {
+            try handler.perform([request])
+            if let results = request.results as? [VNClassificationObservation] {
+                for classification in results {
+                    file.observations[classification.identifier] = classification.confidence
+                }
+            }
+        } catch {
+            print("Vision error: \(error)")
+        }
+
+console.log(a);
+```
+
+When running in the cloud, Squiggly sends snapshots to a Hugging Face endpoint where the model is hosted. This allows you to use larger or frequently updated models without having to ship a new app build. It does require an internet connection, and performance depends on network speed. Cloud inference is useful for rapid iteration, A/B testing, or when using architectures too large for on-device execution. By default, Squiggly runs locally, but if confidence in a classification is low or the local model isn’t available, it can automatically fall back to the Hugging Face cloud option. You can also manually switch between local and cloud inference in the app’s settings
+
+
+```swift filename="CloudModelExample.swift" {3} copy
+var request = URLRequest(url: URL(string: "https://api-inference.huggingface.co/models/your-namespace/your-model")!)
+request.httpMethod = "POST"
+request.setValue("Bearer \(tokenFromKeychain)", forHTTPHeaderField: "Authorization")
+request.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+request.httpBody = imageData // PNG/JPEG of the snapshot
+
+let (data, _) = try await URLSession.shared.data(for: request)
+struct HFLabel: Decodable { let label: String; let score: Double }
+let preds = try JSONDecoder().decode([HFLabel].self, from: data)
+
+```
