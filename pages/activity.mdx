@@ -1,3 +1,6 @@
+import { Callout } from 'nextra/components'
+
+
 ## Hands-On-Lab
 import { Steps } from 'nextra/components'
 
@@ -21,16 +24,16 @@ With the Mac, the Apple Vision Pro, and the crayon box, we will take you through
 
 <Steps>
 
-### Step 1 — Fit the Apple Vision Pro
+### Step 1: Fit the Apple Vision Pro
 If you haven't already, put on the headset and adjust the straps. If you need support, please raise your hand.
 
-### Step 2 — Open Xcode
+### Step 2: Open Xcode
 On the MacBooks, the password is: `developer`. 
 Navigate to `Documents/spatialui/squiggly/squiggly.xcodeproj` to open the XCode project. Alternatively, open **XCode** and open the `spatialui` folder.
 
 ![Apple Vision Pro](../components/public/images/activity1.png)
 
-### Step 3 — Launch the App
+### Step 3: Launch the App
 Once the project finishes compiling, and press **Run** to build to the Apple Vision Pro.  On the Apple Vision Pro, open **Squiggly**; you should see the welcome screen.
 
 ![Apple Vision Pro](../components/public/images/activity2.png)
@@ -58,11 +61,25 @@ In the Squiggly app, machine learning was integrated in a number of different wa
 | [Squiggly Model]() (Custom)  | Image classification which will later on be integrated as multimodal with `.json` files              |
 
 ### 3D UI and Rendering
-Entering into the Squiggly app, you will immediately see a welcome screen. This screen in visionOS is called a Window. In the Squiggly App, we work with **SwiftUI** and **UIKit** for flat UI and for 3D text, RealityView components. 
+When you open Squiggly, you land on a welcome screen inside a standard visionOS window. Our 2D interface is built with SwiftUI with a little bit of UIKit here and there. All 3D content—including 3D text and the drawing canvas—is rendered with RealityKit and presented via RealityView.
 
-Metal by Apple is really great for rendering. However, in this project, we did not use Metal for our project and solely relied on Reality Composer Pro and __. 
+* **Volumes:** In the Squiggly app, we host 3D text, 3D models, and drawing entities inside a `RealityKit` scene that can be displayed as volumes. These 3D objects allow people to view content from all angles. Volumes also create an experience that supports transitions from a 2D window into a more immersive scene with 3D content and bounded 3D containers people can walk around and view from any angle. Volumes are useful for small 3D scenes, widgets, or models that sit statically in a room. 
+
+* **Windows:** Windows are flat, 2D surfaces like traditional UI. They are perfect for toolbars, buttons, status text, and configuration panels. In the Squiggly app, you will see that the main section is a window itself. 
+
+* **Immersive Spaces:** Immersive spaces are full-environment experiences that surround the user. They are ideal for focused, spatial tasks without the constraints of a window frame. In Squiggly, the painting and object detection mode takes place within an immersive space. In this way, strokes feel anchored to the room and space rather than on a flat plane. 
 
 ![Apple Vision Pro](../components/public/images/activity3.png)
 
-* **Volumes:** 3D objects that allow people to view content from all angles. Volumes also create an experience that transitions fluidly from a 2D window into a more immersive scene with 3D content.
-* **Windows:**
+We don’t use Metal directly in this project. Instead, assets are authored in Reality Composer Pro and rendered by RealityKit at runtime. Metal is great for custom render pipelines and shaders, but Squiggly relies on RealityKit. RealityKit already gives us performant, GPU-accelerated rendering plus physics, lighting, and materials out of the box.
+The materials we use are simple and the defaults with as `Unlit/PhysicallyBased` over custom shaders.
+
+<Callout type="info" emoji="💡">
+  <strong>Note:</strong> If you’re comparing approaches, use RealityKit and Reality Composer Pro when you want fast iteration with Apple’s scene tools. Use Metal when you need custom shading, compute kernels, or fine-grained control over the render graph.
+</Callout>
+
+* **Authoring:** 3D assets are created and edited in Reality Composer Pro and added to the Xcode project as `.reality` files.
+* **Presentation:** A RealityView hosts the scene and manages entities (strokes, guides, and 3D text).
+* **Snapshots:** We use an off-screen RealityKit renderer to capture square images from fixed camera poses (front/back/left/right/top/bottom/oblique1/oblique2). These export as 640×640 PNGs alongside the JSON stroke data. The stroke data is then compiled into a dataset then trained in CreateML.
+
+![Apple Vision Pro](../components/public/images/activity4.png)
