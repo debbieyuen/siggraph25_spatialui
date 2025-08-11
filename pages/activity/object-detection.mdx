@@ -75,43 +75,6 @@ The reference objects selected for this project were a bit small. Creating a 3D 
 After creating the reference objects, we are then able to add them to our **Reference Images** folder. From there, we will see our reference objects appear in our UI. 
 ![Apple Vision Pro](../.././components/public/images/objectdetection/objectdetection8.PNG)
 
-### Hand Detection and Gestures
-Squiggly uses Apple’s hand-tracking APIs to detect when you pinch, tap, or perform other gestures in mid-air. This lets you draw, select tools, and interact with 3D elements without needing controllers.
-
-### Eye Tracking
-With visionOS eye-tracking, Squiggly can highlight objects or UI elements as you look at them, making interactions more natural. Your gaze can be combined with gestures to confirm selections, keeping your workflow smooth and hands-free.
-
-### Object Detection Anchoring
-In Squiggly, reference objects let the app recognize and track real-world items—like crayons—so we can anchor 3D drawings in the correct position in space.
-
-#### Method 1: Reality Composer Pro
-Use Reality Composer Pro to import your `.arobject` or `.referenceobject` files. Once added, they can be placed directly into your scene with drag-and-drop simplicity. This is how Squiggly app implemented object anchoring. 
-
-<Callout type="info" emoji="💡">
-  <strong>Note:</strong> Want to learn more? Read more about using a reference object with Reality Composer Pro <strong><a href="https://developer.apple.com/documentation/visionos/using-a-reference-object-with-reality-composer-pro">here</a></strong>!
-</Callout>
-
-To see how we added UI anchors to our crayon box, navigate to `squiggly/Packages/RealityKitCrayonBoxContent/Sources/Package` and open in **Reality Composer Pro**
-![Apple Vision Pro](../.././components/public/images/objectdetection/objectdetection13.png)
-
-In Reality Composer Pro, we had added a `Transform` with an **Object** anchor.
-![Apple Vision Pro](../.././components/public/images/objectdetection/objectdetection12.png)
-
-
-#### Method 2: Programmatically 
-Load reference objects in Swift code using RealityKit. This allows you to dynamically choose which object to track at runtime, enabling advanced features like switching between multiple tracked objects.
-
-<Callout type="info" emoji="💡">
-  <strong>Note:</strong> Want to learn more? Read more about using a reference object with RealityKit <strong><a href="https://developer.apple.com/documentation/visionos/using-a-reference-object-with-realitykit">here</a></strong>!
-</Callout>
-
-#### Method 3: ARKit
-For lower-level control, Squiggly can use ARKit’s `ARReferenceObject` APIs. This is ideal if you need custom detection logic or want to integrate with AR session configuration directly.
-
-<Callout type="info" emoji="💡">
-  <strong>Note:</strong> Want to learn more? Read more about using a reference object with ARKit <strong><a href="https://developer.apple.com/documentation/visionos/using-a-reference-object-with-arkit">here</a></strong>!
-</Callout>
-
 ### Local vs Cloud
 All models used in the Squiggly app are using local models. For our learning purposes, we wanted to make sure the projects were able to run even without WiFi. 
 

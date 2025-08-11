@@ -7,7 +7,7 @@ const config: DocsThemeConfig = {
     key: 'announcement-2025',
     text: (
       <a href="https://s2025.conference-schedule.org/presentation/?id=gensub_405&sess=sess306" target="_blank" rel="noreferrer">
-        🎉 Join us at SIGGRAPH on Monday, August 11th 2025 from 2:00-3:30 pm at West Building, Exhibit Hall B →
+        🎉 Join us at SIGGRAPH on Monday, August 11th 2025 from 3:30-5:00 pm at West Building, Exhibit Hall B →
       </a>
     ),
     dismissible: true
