@@ -9,15 +9,7 @@ Next to each Apple Vision Pro, you will find a crayon box. If you do not have a 
 
 With the Mac, the Apple Vision Pro, and the crayon box, we will take you through an artistic journey while learning exploring the space of predictive UI or UI Understanding. 
 
-<iframe
-  width="100%"
-  height="420"
-  src="https://youtu.be/ldZTil_zFnY"
-  title="Demo video"
-  frameBorder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowFullScreen
-/>
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/ldZTil_zFnY?si=GtthVT0inyP1NJHh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ### Setting Up
@@ -38,7 +30,12 @@ Once the project finishes compiling, and press **Run** to build to the Apple Vis
 
 ![Apple Vision Pro](../components/public/images/activity2.png)
 
+Here is a screenshot of the home screen from the Apple Vision Pro simulator
+![Apple Vision Pro](../components/public/images/activity5.png)
+
+
 </Steps>
+
 ### Squiggly App 
 
 Now that your Apple Vision Pro and the XCode project is set up, lets talk about the development and design of the app before diving into modfying the code and building to the headset! The Squiggly App is a demo app for learning purposes and is not a fully polished application. It is meant to be a starter project to support the visualization and imagination of machine learning and user interface design. 
@@ -59,6 +56,9 @@ In the Squiggly app, machine learning was integrated in a number of different wa
 | [MNIST Dataset with CoreML]()| Used to categorize drawing strokes              | 
 | [Squigglers Model]() (Custom) | All reference objects for object detection | Apple Vision Pro                       |
 | [Squiggly Model]() (Custom)  | Image classification which will later on be integrated as multimodal with `.json` files              |
+
+Here is a screenshot of the Squiggly Image Classification model, created with CreateML.
+![Apple Vision Pro](../components/public/images/activity4.png)
 
 ### 3D UI and Rendering
 When you open Squiggly, you land on a welcome screen inside a standard visionOS window. Our 2D interface is built with SwiftUI with a little bit of UIKit here and there. All 3D content—including 3D text and the drawing canvas—is rendered with RealityKit and presented via RealityView.

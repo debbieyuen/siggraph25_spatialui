@@ -21,6 +21,16 @@ Once you are in the tab, you may try choosing a photo of your choice to classify
 
 ![Apple Vision Pro](../../components/public/images/imageclassify/classify3.png)
 
+In your Photos library, you should see 10 images. Here is an example from Debbie's Photo's library. 
+![Apple Vision Pro](../../components/public/images/imageclassify/classify5.png)
+
+### Step 4: Run `VNClassifyImageRequest()`
+Once you select a photo, `VNClassifyImageRequest` will analyze it and return the predicted classifications.
+This Vision framework request analyzes the visual content and returns a ranked list of possible classifications, each with an associated confidence score. You’ll see the top predictions displayed, allowing you to verify if the model correctly identified the subject in your photo.
+
+![Apple Vision Pro](../../components/public/images/imageclassify/classify4.PNG)
+
+
 </Steps>
 
 ## Overview
@@ -48,4 +58,4 @@ The Apple Vision Framework is the default in the Squiggly app. It brings the abi
 ## Custom Image Classifier (CreateML)
 As a drawing app, we are able to draw strokes of our choice. Later we will discuss how to create a custom image classifier model. 
 
-You train an image classifier by showing it many examples of images you’ve already labeled. For example, you can train an image classifier to recognize animals by gathering photos of elephants, giraffes, lions, and so on. After the image classifier finishes training, you assess its accuracy and, if it performs well enough, save it as a Core ML model file. You then import the model file into your Xcode project to use the image classifier in your app. CreateML is a tool that we will be using to support us through this process.
+With CreateML, you can train an image classifier by showing it many examples of images you’ve already labeled. For example, you can train an image classifier to recognize animals by gathering photos of elephants, giraffes, lions, and so on. After the image classifier finishes training, you assess its accuracy and, if it performs well enough, save it as a Core ML model file. You then import the model file into your Xcode project to use the image classifier in your app. CreateML is a tool that we will be using to support us through this process.
