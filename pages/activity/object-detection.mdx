@@ -3,22 +3,31 @@ import { Callout } from 'nextra/components'
 
 # Object Detection
 
+![Apple Vision Pro](../../components/public/images/objectdetection/objectdetection0_1.jpeg)
+
 ## Getting Started 
 <Steps>
 
 ### Step 1: CombinedRealityView.swift
-Navigate to `squiggly/Views/Main/CombinedRealityView.swift`.
+Navigate to `squiggly/Views/Main/CombinedRealityView.swift`. This is where the code for the immersive space is. 
+
+![Apple Vision Pro](../../components/public/images/objectdetection/objectdetection0_2.png)
 
 ### Step 2: Object Tab in Toolbar
-On the Apple Vision Pros, you will find the toolbar on the left. In this window, we have 3 toolbars including the left toolbar, bottom toolbar, and the top ornament. Select the `Photos` Tab to open up the tab. 
+On the Apple Vision Pros, you will find the toolbar on the left. In this window, we have 3 toolbars including the left toolbar, bottom toolbar, and the top ornament. In the left toolbar, select the `Objects` Tab to open up the section. 
 
-### Step 3: Crayon Box and Blue Crayon
-Once you are in the tab, you may try choosing a photo of your choice to classify. By default we are using Apple's built-in Vision Framework with `VNClassifyImageRequest()`. 
+### Step 3: Select Objects to Detect
+Once you are in the tab, you will find a `NavigationSplitView`. Try cycing through the objects in which you will see we trained 3 crayon boxes and some of its individual crayons. For our course today, we will focus only on the Crayon Box. Please deselect all objects except for `Crayonbox 3_raw_ObjectMaskOn`.
 
-### Step 4: Draw Digits, Stars, or Hearts
-Once you are in the tab, you may try choosing a photo of your choice to classify. By default we are using Apple's built-in Vision Framework with `VNClassifyImageRequest()`. 
+![Apple Vision Pro](../../components/public/images/objectdetection/objectdetection0_1_2.PNG)
 
-![Apple Vision Pro](../../components/public/images/imageclassify/classify3.png)
+### Step 4: Detect Crayon Box
+Then click on the green `Play` button in the bottom toolbar. The bottom toolbar will then change into a different UI as you enter into the immersive space. Now, find your crayon box on your table. When detected, you should see a yellow overlay with a UI overlay. 
+
+![Apple Vision Pro](../../components/public/images/objectdetection/objectdetection0_3.png)
+
+The box changes shape when it is opened. For best results, cover the face of the crayon box with the tabs.
+![Apple Vision Pro](../../components/public/images/objectdetection/objectdetection0_4.PNG)
 
 </Steps>
 
@@ -27,7 +36,7 @@ Once you are in the tab, you may try choosing a photo of your choice to classify
 An image classifier is a machine learning model that recognizes images. When you give it an image, it responds with a category label for that image. You train an image classifier by showing it many examples of images you’ve already labeled. For example, you can train an image classifier to recognize animals by gathering photos of elephants, giraffes, lions, and so on. After the image classifier finishes training, you assess its accuracy and, if it performs well enough, save it as a Core ML model file. You then import the model file into your Xcode project to use the image classifier in your app. CreateML is a tool that we will be using to support us through this process.
 
 ## Reference Objects
-First lets start off with picking a 3D model. In our case, we got 24 count crayon boxes from Target. Luckily, they are on sale for 0.50 cents (USD)!!
+In this section, we share this process was implemented. First we started off by picking a 3D model. In our case, we got 24 count crayon boxes from Target. Luckily, they are on sale for 0.50 cents (USD)!!
 
 ![Apple Vision Pro](../.././components/public/images/objectdetection/objectdetection1.jpeg)
 
@@ -82,6 +91,13 @@ Use Reality Composer Pro to import your `.arobject` or `.referenceobject` files.
   <strong>Note:</strong> Want to learn more? Read more about using a reference object with Reality Composer Pro <strong><a href="https://developer.apple.com/documentation/visionos/using-a-reference-object-with-reality-composer-pro">here</a></strong>!
 </Callout>
 
+To see how we added UI anchors to our crayon box, navigate to `squiggly/Packages/RealityKitCrayonBoxContent/Sources/Package` and open in **Reality Composer Pro**
+![Apple Vision Pro](../.././components/public/images/objectdetection/objectdetection13.png)
+
+In Reality Composer Pro, we had added a `Transform` with an **Object** anchor.
+![Apple Vision Pro](../.././components/public/images/objectdetection/objectdetection12.png)
+
+
 #### Method 2: Programmatically 
 Load reference objects in Swift code using RealityKit. This allows you to dynamically choose which object to track at runtime, enabling advanced features like switching between multiple tracked objects.
 
@@ -93,7 +109,7 @@ Load reference objects in Swift code using RealityKit. This allows you to dynami
 For lower-level control, Squiggly can use ARKit’s `ARReferenceObject` APIs. This is ideal if you need custom detection logic or want to integrate with AR session configuration directly.
 
 <Callout type="info" emoji="💡">
-  <strong>Note:</strong> Want to learn more? Read more about using a reference object with ARKit<strong><a href="https://developer.apple.com/documentation/visionos/using-a-reference-object-with-arkit">here</a></strong>!
+  <strong>Note:</strong> Want to learn more? Read more about using a reference object with ARKit <strong><a href="https://developer.apple.com/documentation/visionos/using-a-reference-object-with-arkit">here</a></strong>!
 </Callout>
 
 ### Local vs Cloud
@@ -121,16 +137,26 @@ console.log(a);
 
 When running in the cloud, Squiggly sends snapshots to a Hugging Face endpoint where the model is hosted. This allows you to use larger or frequently updated models without having to ship a new app build. It does require an internet connection, and performance depends on network speed. Cloud inference is useful for rapid iteration, A/B testing, or when using architectures too large for on-device execution. By default, Squiggly runs locally, but if confidence in a classification is low or the local model isn’t available, it can automatically fall back to the Hugging Face cloud option. You can also manually switch between local and cloud inference in the app’s settings
 
+Here is an example of running a model from Pytorch from Hugging Face. If you are running `.mlmodels` you can’t load it with transformers. Instead, run it with Core ML which means Swift (iOS/macOS) or Python via coremltools. Read more [here](https://huggingface.co/docs/trl/en/use_model).
 
 ```swift filename="CloudModelExample.swift" {3} copy
-var request = URLRequest(url: URL(string: "https://api-inference.huggingface.co/models/your-namespace/your-model")!)
-request.httpMethod = "POST"
-request.setValue("Bearer \(tokenFromKeychain)", forHTTPHeaderField: "Authorization")
-request.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
-request.httpBody = imageData // PNG/JPEG of the snapshot
+from transformers import AutoImageProcessor, AutoModelForImageClassification
+from PIL import Image
 
-let (data, _) = try await URLSession.shared.data(for: request)
-struct HFLabel: Decodable { let label: String; let score: Double }
-let preds = try JSONDecoder().decode([HFLabel].self, from: data)
+model_name_or_path = "debbieyuen/squiggly"  # your model on Hugging Face
+device = "cpu"  # or "cuda" if you have a GPU
+
+processor = AutoImageProcessor.from_pretrained(model_name_or_path)
+model = AutoModelForImageClassification.from_pretrained(model_name_or_path).to(device)
+
+image = Image.open("test.png")
+inputs = processor(images=image, return_tensors="pt").to(device)
+
+outputs = model(**inputs)
+predictions = outputs.logits.softmax(dim=-1)
+predicted_class = predictions.argmax(dim=-1).item()
+
+print(model.config.id2label[predicted_class])
+
 
 ```
